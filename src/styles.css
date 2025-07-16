@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+}

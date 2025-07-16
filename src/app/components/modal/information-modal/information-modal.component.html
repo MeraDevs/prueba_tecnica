@@ -1,0 +1,15 @@
+<div class="modal-backdrop">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>{{ modalOptions.header }}</h3>
+    <p>{{ modalOptions.message }}</p>
+    <hr />
+    <div class="button-row">
+      @if (modalOptions.type === "info") {
+      <button (click)="onCloseModal()">Cerrar</button>
+      }@else {
+      <button (click)="onCancel()">Cancelar</button>
+      <button (click)="onConfirm()">Confirmar</button>
+      }
+    </div>
+  </div>
+</div>

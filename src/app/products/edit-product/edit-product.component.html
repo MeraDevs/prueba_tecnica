@@ -1,0 +1,117 @@
+<div class="form-container">
+  <h2>Formulario de Actualización</h2>
+  <hr />
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div
+        class="form-field"
+        [class.has-error]="f['id'].touched && f['id'].invalid"
+      >
+        <label for="id">
+          <span>ID</span>
+        </label>
+        <input id="id" formControlName="id" readonly />
+        @if (f["id"].touched && f["id"].invalid) {
+        <span class="invalid">ID no válido</span>
+        }
+      </div>
+
+      <div
+        class="form-field"
+        [class.has-error]="f['name'].touched && f['name'].invalid"
+      >
+        <label for="name">
+          <span>Nombre</span>
+        </label>
+        <input id="name" formControlName="name" />
+        @if (f["name"].touched && f["name"].invalid) {
+        <span class="invalid">Nombre no válido</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div
+        class="form-field"
+        [class.has-error]="f['description'].touched && f['description'].invalid"
+      >
+        <label for="description">
+          <span>Descripción</span>
+        </label>
+        <input id="description" formControlName="description" />
+        @if (f["description"].touched && f["description"].invalid) {
+        <span class="invalid">Descripción no válida</span>
+        }
+      </div>
+
+      <div
+        class="form-field"
+        [class.has-error]="f['logo'].touched && f['logo'].invalid"
+      >
+        <label for="logo">
+          <span>Logo</span>
+        </label>
+        <input id="logo" formControlName="logo" />
+        @if (f["logo"].touched && f["logo"].invalid) {
+        <span class="invalid">Logo no válido</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div
+        class="form-field"
+        [class.has-error]="
+          f['date_release'].touched && f['date_release'].invalid
+        "
+      >
+        <label for="date_release">
+          <span>Fecha Liberación</span>
+        </label>
+        <input
+          id="date_release"
+          formControlName="date_release"
+          type="date"
+          (change)="onDateReleaseChange($event)"
+        />
+        @if (f["date_release"].touched && f["date_release"].invalid) {
+        <span class="invalid">Fecha de liberación no válida</span>
+        }
+      </div>
+
+      <div
+        class="form-field"
+        [class.has-error]="
+          f['date_revision'].touched && f['date_revision'].invalid
+        "
+      >
+        <label for="date_revision">
+          <span>Fecha Revisión</span>
+        </label>
+        <input
+          id="date_revision"
+          formControlName="date_revision"
+          type="date"
+          readonly
+        />
+        @if (f["date_revision"].touched && f["date_revision"].invalid) {
+        <span class="invalid">Fecha de revisión no válida</span>
+        }
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" class="button-delete" (click)="onDelete()">Eliminar</button>
+      <button type="submit" [disabled]="productForm.invalid || !productForm.touched">Enviar</button>
+    </div>
+  </form>
+</div>
+@if (isOpened) {
+<app-information-modal
+  [isOpened]="isOpened"
+  [modalOptions]="modalOptions"
+  (confirm)="onConfirmDelete($event)"
+  (showModal)="isOpened = false"
+/>
+}

@@ -1,0 +1,126 @@
+.main-container {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+}
+
+.container {
+  margin: 50px 50px;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+.search-container {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  input {
+    width: 15%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    width: 15%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #a3c6fa;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(15, 43, 105, 0.479);
+      }
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  background-color: white;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 1rem 2rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      white-space: nowrap;
+    }
+
+    th {
+      background-color: #f9fafc;
+      font-weight: 600;
+    }
+
+    tr {
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    .info-icon {
+      display: inline-block;
+      margin-left: 0.25rem;
+      background: #ccc;
+      color: #fff;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      font-size: 0.75rem;
+      text-align: center;
+      line-height: 16px;
+      cursor: pointer;
+    }
+
+    .circle-logo {
+      background: #bbb;
+      color: #fff;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+  }
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 1rem;
+
+  select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

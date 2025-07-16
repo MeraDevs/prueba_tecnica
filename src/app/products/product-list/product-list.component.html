@@ -1,0 +1,63 @@
+<div class="main-container">
+  <div class="header">
+    <h1>BANCO</h1>
+  </div>
+  <div class="container">
+    <div class="search-container">
+      <input
+        #searchInput
+        type="text"
+        placeholder="Buscar..."
+        (input)="onSearch(searchInput.value)"
+      />
+      <button (click)="createProduct()">Agragar producto</button>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>
+              Descripción
+              <span class="info-icon" title="Descripción del producto">i</span>
+            </th>
+            <th>
+              Fecha de liberación
+              <span class="info-icon" title="Descripción del producto">i</span>
+            </th>
+            <th>
+              Fecha de reestructuración
+              <span class="info-icon" title="Descripción del producto">i</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of filteredProductos$ | async; track $index) {
+          <tr (click)="editProduct(item)">
+            <td>
+              <div class="circle-logo">LG</div>
+            </td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.date_release }}</td>
+            <td>{{ item.date_revision }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+
+      <div class="footer">
+        @if (filteredProductos$ | async) {
+        <span>{{ (filteredProductos$ | async)?.length ?? 0 }} resultado</span>
+        }
+
+        <select #sizeItems (change)="changeItemsPerPage($any(sizeItems.value))">
+          @for (size of pageSizes; track $index) {
+          <option [value]="size">{{ size }}</option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
