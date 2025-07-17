@@ -5,7 +5,7 @@ import { ProductService } from '../../services/product-service/product.service';
 import { productExistsValidator, releaseDateValidator } from '../../validators/product.validator';
 import { Product } from '../../models/product.interface';
 import { InformationModalComponent, ModalOptions } from '../../components/modal/information-modal/information-modal.component';
-import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SharedService } from '../../services/shared-service/shared.service';
 
 @Component({
@@ -63,18 +63,22 @@ export class EditProductComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.product = this.sharedService.selectedProduct;
-
-    if (!this.product) {
-      this.router.navigate([""]);
-      return
-    }
-    this.populateForm(this.product);
-  }
-
   get f() {
     return this.productForm.controls;
+  }
+
+  ngOnInit(): void {
+    this.loadProduct();
+  }
+
+  private loadProduct() {
+    this.product = this.sharedService.selectedProduct;
+    
+    if (!this.product) {
+      this.router.navigate([""]);
+    } else {
+      this.populateForm(this.product);
+    }
   }
 
   populateForm(product: Product) {
@@ -142,7 +146,6 @@ export class EditProductComponent implements OnInit {
   }
 
   onConfirmDelete(event: boolean) {
-    
     this.isOpened = false;
     console.log(event);
     console.log(this.product);

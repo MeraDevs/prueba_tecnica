@@ -18,18 +18,10 @@ export interface ModalOptions {
 export class InformationModalComponent {
 
   @Input() isOpened!: boolean;
-  @Input() modalOptions!: ModalOptions
+  @Input() modalOptions?: ModalOptions
 
   @Output() showModal = new EventEmitter<boolean>();
   @Output() confirm = new EventEmitter<boolean>();
-
-  onCancel() {
-    this.onCloseModal();
-  }
-
-  onConfirm() {
-    this.confirm.emit(false);
-  }
 
   onCloseModal() {
     this.showModal.emit(false);
